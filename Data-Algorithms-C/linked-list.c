@@ -90,31 +90,30 @@ struct Node* deleteNodeAtNth(struct Node* head,int pos){
         printf("tf u mean\n");
     }
     
-    struct Node* temp = head;
+    struct Node* pre = head;
 
     if(pos == 0){
-        temp = head->next;
-        free(head);
-        return temp; 
+        head = pre->next;
+        free(pre);
+        return head; 
     }
 
     int tempPos = 0;
-    struct Node* pre;
+    struct Node* temp;
 
     while (temp != NULL && tempPos < pos - 1)
     {
-        temp = temp->next;
-        pre = temp->next;
+        pre = pre->next;
         tempPos++;
     }
+ 
+    temp = pre->next;
 
     if (temp == NULL) {
         printf("Out of reach\n");
         return head;
     }
-
-    pre = temp;
-    temp = temp->next;
+    
     pre->next = temp->next;
     free(temp);
     return head;
@@ -158,6 +157,10 @@ int main(void){
     printList(head);
 
     head = deleteNodeAtNth(head,1);
+
+    printList(head);
+
+    head = deleteNodeAtNth(head,0);
 
     printList(head);
 
