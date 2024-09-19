@@ -135,6 +135,29 @@ struct Node* deleteAtNth(struct Node* head,int pos){
     return head;
 }
 
+struct Node* reverseList(struct Node* head){
+    if(head == NULL){
+        return head;
+    }
+
+    struct Node *prev,*current,*next;
+
+    prev = NULL;
+    current = head;
+
+    while (current != NULL)
+    {
+        next = current->next;
+        current->next = prev;
+        prev = current;
+        current = next;
+    }
+    
+    head = prev;
+
+    return head;
+}
+
 // Function to free the memory allocated for the linked list
 void freeList(struct Node* head) {
     struct Node* temp;
@@ -154,14 +177,16 @@ int main() {
     head = insertAtEnd(head,4);*/
 
     printf("k\n");
-    printList(head);
 
     head = insertAtNth(head,1,0);
     head = insertAtNth(head,2,1);
     head = insertAtNth(head,3,2);
-    head = insertAtNth(head,4,2);
+    head = insertAtNth(head,4,3);
     //head = deleteAtNth(head,);
 
+    printList(head);
+
+    head = reverseList(head);
     printf("j\n");
     printList(head);
 
