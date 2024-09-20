@@ -168,6 +168,15 @@ void freeList(struct Node* head) {
     }
 }
 
+void printListRecursive(struct Node* node){
+    if(node == NULL){
+        printf("NULL");
+        return;
+    }
+    printf("%d -> ",node->data);
+    printListRecursive(node->next);
+}
+
 int main() {
     struct Node* head = NULL;
 
@@ -189,6 +198,8 @@ int main() {
     head = reverseList(head);
     printf("j\n");
     printList(head);
+
+    printListRecursive(head);
 
     freeList(head);
 
