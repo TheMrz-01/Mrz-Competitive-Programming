@@ -170,14 +170,27 @@ void freeList(struct Node* head) {
 
 void printListRecursive(struct Node* node){
     if(node == NULL){
-        printf("NULL");
+        printf("NULL\n");
         return;
     }
     printf("%d -> ",node->data);
     printListRecursive(node->next);
 }
 
-int main() {
+void printListRecursiveReverse(struct Node* node){
+    if(node == NULL){
+        printf("\n");
+        return;
+    }
+    printListRecursiveReverse(node->next);
+    printf("%d -> ",node->data);
+}
+
+int main(int argc,char *argv[]) {
+    if(argc > 1){
+        return 1;
+    }
+
     struct Node* head = NULL;
 
     /*head = insertAtEnd(head,1);
@@ -185,27 +198,27 @@ int main() {
     head = insertAtEnd(head,3);
     head = insertAtEnd(head,4);*/
 
-    printf("k\n");
-
     head = insertAtNth(head,1,0);
     head = insertAtNth(head,2,1);
     head = insertAtNth(head,3,2);
     head = insertAtNth(head,4,3);
     //head = deleteAtNth(head,);
 
+    printListRecursive(head);
+    printListRecursiveReverse(head);
+    printf("NULL\n\n");
+
     printList(head);
 
     head = reverseList(head);
-    printf("j\n");
+    printf("\n");
     printList(head);
-
-    printListRecursive(head);
 
     freeList(head);
 
     //Closing Stuff
-    int number;
-    printf(" ");
-    scanf("%d", &number);
+    int closeWindow;
+    scanf("%d",&closeWindow);
+    
     return 0;
 }
