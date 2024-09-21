@@ -158,6 +158,20 @@ struct Node* reverseList(struct Node* head){
     return head;
 }
 
+//WORKS WITH ONLY GLOBAL HEAD!
+void reverseListrecursion(struct Node* head){
+    struct Node* p;
+    if(p->next == NULL){
+        head = p;
+        return;
+    }
+
+    reverseListrecursion(head);
+    struct Node* q = p->next;
+    q->next = p;
+    p->next = NULL;
+}
+
 // Function to free the memory allocated for the linked list
 void freeList(struct Node* head) {
     struct Node* temp;
@@ -219,6 +233,6 @@ int main(int argc,char *argv[]) {
     //Closing Stuff
     int closeWindow;
     scanf("%d",&closeWindow);
-    
+
     return 0;
 }
