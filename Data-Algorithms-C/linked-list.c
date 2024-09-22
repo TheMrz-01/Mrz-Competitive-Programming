@@ -7,6 +7,14 @@ struct Node {
     struct Node* next;
 };
 
+struct Node* createNode(int data){
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = data;
+    newNode->next = NULL;
+    
+    return newNode;
+}
+
 // Function to print the elements of the linked list
 void printList(struct Node* head) {
     while (head != NULL) {
