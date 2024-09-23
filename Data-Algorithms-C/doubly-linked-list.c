@@ -37,6 +37,20 @@ struct Node* insertAtEnd(struct Node *head,int data){
     return head;
 }
 
+struct Node* insertAtbeg(struct Node *head,int data){
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+
+    if(head == NULL){
+        return newNode;
+    }
+
+    newNode->data = data;
+    newNode->next = head;
+    newNode->prev = NULL;
+
+    return newNode;
+}
+
 void printList(struct Node *head){
     struct Node *temp;
     temp = head;
@@ -61,6 +75,8 @@ int main(int argc,char *argv[]){
     head = insertAtEnd(head,2);
     head = insertAtEnd(head,3);
     head = insertAtEnd(head,4);
+
+    head = insertAtbeg(head,5);
 
     printList(head);
 
