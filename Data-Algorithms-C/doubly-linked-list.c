@@ -48,6 +48,8 @@ struct Node* insertAtbeg(struct Node *head,int data){
     newNode->next = head;
     newNode->prev = NULL;
 
+    head->prev = newNode;
+
     return newNode;
 }
 
@@ -63,6 +65,20 @@ void printList(struct Node *head){
     printf("NULL");
 }
 
+void reversePrint(struct Node* head){
+    printf("\n");
+    struct Node* temp = head;
+    
+    while(temp->next != NULL){
+        temp = temp->next;
+    }
+
+    while(temp != NULL){
+        printf("%d -> ",temp->data);
+        temp = temp->prev;
+    }
+    printf("NULL");
+}
 
 int main(int argc,char *argv[]){
     if(argc > 1){
@@ -79,6 +95,7 @@ int main(int argc,char *argv[]){
     head = insertAtbeg(head,5);
 
     printList(head);
+    reversePrint(head);
 
     int closeWindow;
     scanf("%d",&closeWindow);
