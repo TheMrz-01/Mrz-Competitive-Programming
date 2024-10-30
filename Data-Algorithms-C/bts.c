@@ -41,7 +41,7 @@ void searchData(Node** root,int data){
     }
 
     if(data == (*root)->data){
-        printf("Yes sir\n");
+        printf("Where is my data bruce\n");
         return;
     }
     else if(data <= (*root)->data){
@@ -51,8 +51,27 @@ void searchData(Node** root,int data){
         searchData(&((*root)->right), data);   
     }
     else{
-        printf("Where is my data bruce");
         return;
+    }
+}
+
+void findMin(Node** root){
+    if((*root)->left == NULL){
+      printf("Min: %d\n",(*root)->data);
+      return;
+    }
+    else {
+      findMin(&((*root)->left));
+    }
+}
+
+void findMax(Node** root){
+    if((*root)->right == NULL){
+      printf("Max: %d\n",(*root)->data);
+      return;
+    }
+    else {
+      findMax(&((*root)->right));
     }
 }
 
@@ -76,6 +95,9 @@ int main(int argc,char *argv[]){
     searchData(&root,20);
 
     searchData(&root,16);
+    
+    findMin(&root);
+    findMax(&root);
 
     //-----------------------
     int closeWindow;
