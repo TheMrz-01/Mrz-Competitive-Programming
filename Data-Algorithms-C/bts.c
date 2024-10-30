@@ -75,6 +75,13 @@ void findMax(Node** root){
     }
 }
 
+void findHeight(Node** root){
+    if((*root) == NULl)
+      return -1;
+    
+    return max(findHeight((*root)->left),findHeight((*root)->right) + 1
+}
+
 int main(int argc,char *argv[]){
     //Nothing to look at here browski
     if(argc > 1){
